@@ -55,3 +55,8 @@ $ vncserver -kill :1
 如果發現 TAB 鍵不 work 很可能是 Super 鍵失效所導致的
 可以去 Applications -> Settings -> Window Manager 打開 Keyboard 分頁
 預設的 Switch window for same application 是 Super+Tab 請把它 Clear 掉！
+
+
+===== TODO =====
+
+在 Ubuntu 16.04 和 Windows 10 上面推薦用什麼 vnc client?
