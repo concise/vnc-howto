@@ -1,19 +1,3 @@
-===== 請設定防火牆，避免敵人可以存取你的 VNC server =====
-
-我們將使用的 VNC server 預設會打開 5901, 6001
-之類的 port 於所有 interfaces 很不安全
-
-我還沒研究要怎樣子讓他的 TCP server 只 listen 於 loopback interface...
-
-所以建議將 VNC 的 traffic 用 SSH 連線加密，
-這裡的例子我們就設定防火牆規則只允許 dst port = 22 的對內 TCP 連線
-
-$ sudo ufw status
-$ sudo ufw allow 22/tcp
-$ sudo ufw enable
-$ sudo ufw status
-
-
 ===== 安裝套件 =====
 
 $ sudo apt-get install vnc4server xfce4 xfce4-goodies
@@ -31,7 +15,8 @@ $ chmod +x ~/.vnc/xstartup
 第一次使用要設定一個登入你的 VNC session 專用的密碼
 任何知道這個密碼的人，只要可以連到你的 VNC server (TCP) 就可以打開你的桌面...  所以防火牆很關鍵...
 
-$ vncserver :1 -geometry 1280x720
+$ vncserver -localhost -nolisten tcp -geometry 1280x720 :1
+
 
 如果你的本地端螢幕夠大，你可以設定更高的解析度
 
@@ -39,6 +24,8 @@ $ vncserver :1 -geometry 1280x720
 ===== 確認 TCP server 已經打開 (例如 port 5901) =====
 
 $ sudo netstat -nlptu
+
+應該會看到有個 Xvnc4 程序 (running with your user id) 正在聽一個 TCP port
 
 
 ===== SSH proxy =====
@@ -63,7 +50,7 @@ $ vncserver -kill :1
 
 ===== XFCE 使用筆記 =====
 
-第一次進入 XFCE 桌面會問要用什麼設定，請選擇 Use default config
+第一次進入 XFCE 桌面會問要用什麼設定，請選擇「Use default config」
 
 如果發現 TAB 鍵不 work 很可能是 Super 鍵失效所導致的
 可以去 Applications -> Settings -> Window Manager 打開 Keyboard 分頁
