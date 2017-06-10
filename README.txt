@@ -56,6 +56,14 @@ $ vncserver -kill :1
 可以去 Applications -> Settings -> Window Manager 打開 Keyboard 分頁
 預設的 Switch window for same application 是 Super+Tab 請把它 Clear 掉！
 
+如果希望 Terminal 不要有 Alt+F 等快捷鍵
+去 Edit -> Preferences -> Advanced ->
+把 Disable all menu access keys (such as Alt+f) 勾起來
+
+如果希望修改 Terminal 背景色、前景色、十六色
+去 Edit -> Preferences -> Colors
+做適當的設定
+
 
 ===== TODO =====
 
