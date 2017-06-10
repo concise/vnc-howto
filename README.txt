@@ -15,7 +15,7 @@ $ chmod +x ~/.vnc/xstartup
 第一次使用要設定一個登入你的 VNC session 專用的密碼
 任何知道這個密碼的人，只要可以連到你的 VNC server (TCP) 就可以打開你的桌面...  所以防火牆很關鍵...
 
-$ vncserver -localhost -nolisten tcp -geometry 1280x720 :1
+$ vncserver :1 -localhost -nolisten tcp -geometry 1280x720
 
 
 如果你的本地端螢幕夠大，你可以設定更高的解析度
