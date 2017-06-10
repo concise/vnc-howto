@@ -1,6 +1,6 @@
 ===== 安裝套件 =====
 
-$ sudo apt-get install vnc4server xfce4 xfce4-goodies
+$ sudo apt-get install vnc4server xfce4 xfce4-goodies firefox
 
 
 ===== 準備基本的 Xfce VNC 設定檔 =====
