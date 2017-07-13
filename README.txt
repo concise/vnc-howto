@@ -51,14 +51,21 @@ The -L and -R options of ssh are awesome
 
 使用任何你喜歡的 vnc client
 
-以 Ubuntu desktop 為例，你可以用 xvnc4viewer 這個 app：
+在 Ubuntu 上，你可以用 xvnc4viewer 這個 app：
 
     $ sudo apt-get install xvnc4viewer
-    $ xvnc4viewer 127.0.0.1:5901
+    $ xvnc4viewer 127.0.0.1:1234
 
-以 macOS 為例，你可以用內建的 Screen Sharing 這個 app：
+在 macOS 上，你可以用內建的 Screen Sharing 這個 app：
 
     $ open vnc://127.0.0.1:1234
+
+在 Windows 上，你可以用 TigerVNC (以及 PuTTY 的 port forwarding 功能)
+
+    https://github.com/TigerVNC/tigervnc
+    https://bintray.com/tigervnc/stable/tigervnc/1.8.0
+    vncviewer-1.8.0.exe
+        127.0.0.1:1234
 
 
 ===== 伺服器上，當你不再需要這個 VNC server session 時，可以把它殺掉 =====
