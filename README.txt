@@ -20,7 +20,7 @@ $ mkdir -p ~/.vnc
 $ printf '#!/bin/sh\nstartxfce4&\n' > ~/.vnc/xstartup
 $ chmod +x ~/.vnc/xstartup
 
-設定 vnc 密碼為六個零
+設定 vnc 密碼為六個零（不放 ~/.vnc/passwd 密碼檔，第一次開啟 VNC 會要求你指定一個新密碼）
 $ xxd -p -r <<< e940179b669dc61d > ~/.vnc/passwd
 $ chmod 0600 ~/.vnc/passwd
 
