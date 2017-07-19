@@ -1,20 +1,35 @@
-===== 伺服器上，安裝套件 =====
+===== 伺服器端，安裝套件 =====
 
 $ sudo apt-get install vnc4server xfce4 xfce4-goodies firefox
 
 
-===== 伺服器上，準備基本的 Xfce VNC 設定檔 =====
+===== 伺服器端，做一些基本 Xfce 設定 =====
+
+避免第一次進入 XFCE 出現 "Use default config" 和 "One empty panel" 二選一的選擇題
+$ sudo ln -s /etc/xdg/xfce4/panel/default.xml /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+
+把 Super 鍵相關的快捷鍵設定清除，避免 Tab 鍵失靈
+$ sudo sed -i /Super/d /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+
+
+===== 伺服器端，在你的家目錄下，準備一些檔案 =====
 
 $ mkdir -p ~/.vnc
-$ tee ~/.vnc/xstartup <<'END'
-#!/bin/sh
-xrdb $HOME/.Xresources
-startxfce4 &
-END
+
+設定 vnc 開啟 xfce4
+$ printf '#!/bin/sh\nstartxfce4&\n' > ~/.vnc/xstartup
 $ chmod +x ~/.vnc/xstartup
 
+設定 vnc 密碼為六個零
+$ xxd -p -r <<< e940179b669dc61d > ~/.vnc/passwd
+$ chmod 0600 ~/.vnc/passwd
 
-===== 伺服器上，打開 VNC server 並且指定解析度 =====
+放一個 ~/.Xauthority 檔案
+$ touch ~/.Xauthority
+$ chmod 0600 ~/.Xauthority
+
+
+===== 伺服器端，打開 VNC server 並且指定解析度 =====
 
 第一次使用，要設定一個登入你的 VNC session 專用的密碼。
 任何知道這個密碼且可以連到你的 VNC server (TCP) 的人，都可以存取你的桌面。
@@ -68,7 +83,7 @@ The -L and -R options of ssh are awesome
         127.0.0.1:1234
 
 
-===== 伺服器上，當你不再需要這個 VNC server session 時，可以把它殺掉 =====
+===== 伺服器端，當你不再需要這個 VNC server session 時，可以把它殺掉 =====
 
 $ vnc4server -kill :1
 
