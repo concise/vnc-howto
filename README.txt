@@ -88,27 +88,20 @@ The -L and -R options of ssh are awesome
 $ vnc4server -kill :1
 
 
-===== XFCE 重點 =====
-
-第一次進入 XFCE 桌面會問要用什麼設定，請選擇「Use default config」
-
-如果發現 TAB 鍵不 work 應該是 Super 鍵失效所導致的
-可以去 Applications -> Settings -> Window Manager 打開 Keyboard 分頁
-預設的 Switch window for same application 是 Super+Tab 請把它 Clear 掉！
-
-
 ===== XFCE 其他使用筆記 =====
 
-經過實測，在 xfce4-terminal 下可以正常輸入 128 個 7-bit ASCII 字元
-雖然沒有 Super 鍵，已經很堪用了
+可能沒有 Super 鍵可以用
 
-用快捷鍵 Alt+F2 或 Alt+F3 可以搜尋、開啟應用程式
+經過實測，在 xfce4-terminal 下可以正常輸入 128 個 7-bit ASCII 字元
+
+用快捷鍵 Alt+F2 以執行檔名稱搜尋並開啟應用程式
+用快捷鍵 Alt+F3 以應用程式名搜尋並開啟應用程式
 
 可以去 Applications -> Settings -> Keyboard
 在 Application Shortcuts 設定用 Ctrl+Alt+T 開啟 xfce4-terminal
 
 如果希望 Terminal 不要有 Alt+F 等快捷鍵
-去 Edit -> Preferences -> Advanced ->
+去 Edit -> Preferences -> Advanced
 把 Disable all menu access keys (such as Alt+f) 勾起來
 
 如果希望修改 Terminal 背景色、前景色、十六色
