@@ -24,10 +24,6 @@ $ chmod +x ~/.vnc/xstartup
 $ xxd -p -r <<< e940179b669dc61d > ~/.vnc/passwd
 $ chmod 0600 ~/.vnc/passwd
 
-放一個 ~/.Xauthority 檔案
-$ touch ~/.Xauthority
-$ chmod 0600 ~/.Xauthority
-
 
 ===== 伺服器端，打開 VNC server 並且指定解析度 =====
 
