@@ -29,12 +29,16 @@ $ chmod 0600 ~/.vnc/passwd
 
 ===== 伺服器端，打開 VNC server 並且指定解析度 =====
 
-第一次使用，要設定一個登入你的 VNC session 專用的密碼。
-任何知道這個密碼且可以連到你的 VNC server (TCP) 的人，都可以存取你的桌面。
-
 $ vnc4server -localhost -nolisten tcp -geometry 1280x720
 
-如果你的本地端螢幕夠大，你可以設定更高的解析度
+
+任何可以連到你開的 VNC (TCP) server 且知道密碼的人，都可以存取你的桌面、以你的帳戶做事情。
+
+參數 "-localhost -nolisten tcp" 使這個 VNC server 只會
+listen for TCP connections on loopback interface。
+
+參數 "-geometry 1280x720" 設定解析度，
+如果你的本地端螢幕夠大，你可以設定更高的解析度。
 
 這個指令成功執行以後，會顯示 display number 像是 :1 或 :2 或 :3 之類的
 
