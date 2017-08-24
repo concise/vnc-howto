@@ -1,9 +1,9 @@
-===== 伺服器端，安裝套件 =====
+===== (系統管理員 only) 伺服器端，安裝套件 =====
 
 $ sudo apt-get install vnc4server xfce4 xfce4-goodies firefox
 
 
-===== 伺服器端，做一些基本 Xfce 設定 =====
+===== (系統管理員 only) 伺服器端，做一些基本 Xfce 設定 =====
 
 避免第一次進入 XFCE 出現 "Use default config" 和 "One empty panel" 二選一的選擇題
 $ sudo ln -s /etc/xdg/xfce4/panel/default.xml /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
@@ -12,15 +12,17 @@ $ sudo ln -s /etc/xdg/xfce4/panel/default.xml /etc/xdg/xfce4/xfconf/xfce-perchan
 $ sudo sed -i /Super/d /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 
-===== 伺服器端，在你的家目錄下，準備一些檔案 =====
+
+
+===== 伺服器端，在你的家目錄下，初次使用時，要先準備一些檔案 =====
 
 $ mkdir -p ~/.vnc
 
-設定 vnc 開啟 xfce4
+設定 vnc 預設開啟 xfce4 (放 ~/.vnc/xstartup 設定檔)
 $ printf '#!/bin/sh\nstartxfce4&\n' > ~/.vnc/xstartup
 $ chmod +x ~/.vnc/xstartup
 
-設定 vnc 密碼為六個零（不放 ~/.vnc/passwd 密碼檔，第一次開啟 VNC 會要求你指定一個新密碼）
+設定 vnc 密碼為六個零（若不放 ~/.vnc/passwd 密碼檔，第一次開啟 VNC 會要求你指定一個新密碼）
 $ xxd -p -r <<< e940179b669dc61d > ~/.vnc/passwd
 $ chmod 0600 ~/.vnc/passwd
 
@@ -45,7 +47,7 @@ $ vnc4server -localhost -nolisten tcp -geometry 1280x720
 也可以用以下指令去做確認，看看是不是有程序已經打開 TCP server 了
 
     $ ls ~/.vnc/*.pid
-    $ sudo netstat -nlptu
+    $ netstat -nlptu
 
 以下假設我們的 VNC display server 回報的是 :1 (即 TCP port 5901)
 
