@@ -86,7 +86,7 @@ $ vnc4server -kill :1
 
 ===== XFCE 其他使用筆記 =====
 
-可能沒有 Super 鍵可以用
+如果本地端是 macOS 作業系統，則按下 command 鍵的效果到遠端會是 alt 鍵
 
 經過實測，在 xfce4-terminal 下可以正常輸入 128 個 7-bit ASCII 字元
 
