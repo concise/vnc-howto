@@ -47,12 +47,15 @@ $ vnc4server -localhost -nolisten tcp -geometry 1280x720
 也可以用以下指令去做確認，看看是不是有程序已經打開 TCP server 了
 
     $ ls ~/.vnc/*.pid
+    $ cat ~/.vnc/*.pid
     $ netstat -nlptu
 
 以下假設我們的 VNC display server 回報的是 :1 (即 TCP port 5901)
 
 
-===== 在本地端使用 SSH 建立單條 TCP 通道的 proxy =====
+===== 在本地端使用 SSH 做 TCP port forwarding =====
+
+使我們可以安全地連接到在遠端才看得見的 TCP server
 
 $ ssh yourname@yourserver -N -L 1234:127.0.0.1:5901
 
@@ -64,14 +67,14 @@ The -L and -R options of ssh are awesome
 
 使用任何你喜歡的 vnc client
 
+在 macOS 上，你可以用內建的 Screen Sharing 這個 app：
+
+    $ open vnc://127.0.0.1:1234
+
 在 Ubuntu 上，你可以用 xvnc4viewer 這個 app：
 
     $ sudo apt-get install xvnc4viewer
     $ xvnc4viewer 127.0.0.1:1234
-
-在 macOS 上，你可以用內建的 Screen Sharing 這個 app：
-
-    $ open vnc://127.0.0.1:1234
 
 在 Windows 上，你可以用 TigerVNC (以及 PuTTY 的 port forwarding 功能)
 
